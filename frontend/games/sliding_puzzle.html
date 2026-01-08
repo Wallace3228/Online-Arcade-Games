@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sliding Puzzle | Arcade Games</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/sliding_puzzle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dark">
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <i class="fas fa-gamepad"></i> Arcade Games
+            </a>
+            
+            <div class="nav-menu">
+                <a href="../index.html" class="nav-link ">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a href="../index.html#games" class="nav-link">
+                    <i class="fas fa-gamepad"></i> Games
+                </a>
+                <a href="../index.html#leaderboard" class="nav-link">
+                    <i class="fas fa-trophy"></i> Leaderboard
+                </a>
+                
+                <div class="auth-buttons" id="auth-buttons">
+                    <!-- Filled by JavaScript -->
+                </div>
+                
+                <button id="theme-toggle" class="theme-toggle-btn">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Game Content -->
+    <section class="game-container">
+        <div class="game-header">
+            <h1 class="game-title">Sliding Puzzle</h1>
+            <p class="game-description">Slide the tiles to arrange them in numerical order. The empty space can be used to move adjacent tiles.</p>
+            
+            <div class="game-stats">
+                <div class="stat-row">
+                    <div class="stat">
+                        <span class="stat-label">Moves:</span>
+                        <span id="moves-counter">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Time:</span>
+                        <span id="time-counter">00:00</span>
+                    </div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat">
+                        <span class="stat-label">Difficulty:</span>
+                        <select id="difficulty-select" class="difficulty-select">
+                            <option value="easy">Easy (3x3)</option>
+                            <option value="medium" selected>Medium (4x4)</option>
+                            <option value="hard">Hard (5x5)</option>
+                        </select>
+                    </div>
+                    <button id="restart-btn" class="btn">New Game</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Puzzle Board -->
+        <div class="puzzle-board-container">
+            <div class="puzzle-board" id="puzzle-board"></div>
+        </div>
+        
+        <div class="game-status" id="game-status"></div>
+        
+    </section>
+
+    <!-- Victory Screen -->
+    <div id="victory-screen" class="victory-screen hidden">
+        <div class="victory-content">
+            <div class="victory-icon">🏆</div>
+            <h2 class="victory-title">Puzzle Solved!</h2>
+            <p class="victory-message" id="victory-message">You completed the puzzle</p>
+            <div class="victory-stats">
+                <div class="victory-stat">
+                    <span class="victory-stat-label">Moves:</span>
+                    <span id="victory-moves" class="victory-stat-value">0</span>
+                </div>
+                <div class="victory-stat">
+                    <span class="victory-stat-label">Time:</span>
+                    <span id="victory-time" class="victory-stat-value">00:00</span>
+                </div>
+                <div class="victory-stat">
+                    <span class="victory-stat-label">Difficulty:</span>
+                    <span id="victory-difficulty" class="victory-stat-value">Medium (4x4)</span>
+                </div>
+                <!-- CAMBIADO: Moves per minute reemplazado por Score -->
+                <div class="victory-stat">
+                    <span class="victory-stat-label">Score:</span>
+                    <span id="victory-score" class="victory-stat-value">0</span>
+                </div>
+            </div>
+            <div class="victory-buttons">
+                <button id="victory-restart" class="btn victory-btn">Play Again</button>
+                <a href="../index.html" class="btn victory-btn victory-btn-secondary">
+                    <i class="fas fa-home"></i> Back to Home
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4><i class="fas fa-gamepad"></i> Arcade Games</h4>
+                <p>A platform for classic games, competition, and community.</p>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#games">Games</a></li>
+                    <li><a href="../index.html#leaderboard">Leaderboard</a></li>
+                    <li><a href="../login.html">Login</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Games</h4>
+                <ul class="footer-links">
+                    <li><a href="memory.html">Memory Match</a></li>
+                    <li><a href="minesweeper.html">Minesweeper</a></li>
+                    <li><a href="sliding_puzzle.html">Sliding Puzzle</a></li>
+                    <li><a href="game_2048.html">2048</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Project Info</h4>
+                <p><strong>Final Project:</strong> PMUD</p>
+                <p><strong>Student:</strong> Alex Matilla Santos</p>
+                <p><strong>Tech:</strong> Node.js, Express, SQLite</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 Arcade Games. All rights reserved.</p>
+            <p id="api-status">
+                <i class="fas fa-circle api-status-offline"></i> API Status: Checking...
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/sliding_puzzle_jquery.js"></script>
+</body>
+</html>

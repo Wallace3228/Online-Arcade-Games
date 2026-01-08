@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2048 | Arcade Games</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/game_2048.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dark">
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <i class="fas fa-gamepad"></i> Arcade Games
+            </a>
+            
+            <div class="nav-menu">
+                <a href="../index.html" class="nav-link ">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a href="../index.html#games" class="nav-link">
+                    <i class="fas fa-gamepad"></i> Games
+                </a>
+                <a href="../index.html#leaderboard" class="nav-link">
+                    <i class="fas fa-trophy"></i> Leaderboard
+                </a>
+                
+                <div class="auth-buttons" id="auth-buttons">
+                    <!-- Filled by JavaScript -->
+                </div>
+                
+                <button id="theme-toggle" class="theme-toggle-btn">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Game Content -->
+    <section class="game-container">
+        <div class="game-header">
+            <h1 class="game-title">2048</h1>
+            <p class="game-description">Join numbers to get to the 2048 tile! Use arrow keys or swipe to move tiles in any direction.</p>
+            
+            <div class="game-stats">
+                <div class="stat-row">
+                    <div class="stat">
+                        <span class="stat-label">Score:</span>
+                        <span id="score-counter" class="score-value">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Time:</span>
+                        <span id="time-counter" class="score-value">00:00</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Moves:</span>
+                        <span id="moves-counter">0</span>
+                    </div>
+                </div>
+                <div class="stat-row">
+                    <button id="restart-btn" class="btn">New Game</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 2048 Board -->
+        <div class="board-container">
+            <div class="game-board" id="game-board"></div>
+        </div>
+        
+        <div class="game-status" id="game-status"></div>
+        
+    </section>
+
+    <!-- Result Screen - MODIFICADO: Botones igual que Sliding Puzzle -->
+    <div id="result-screen" class="result-screen hidden">
+        <div class="result-content">
+            <div class="result-icon" id="result-icon">🏆</div>
+            <h2 class="result-title" id="result-title">Congratulations!</h2>
+            <p class="result-message" id="result-message">You reached the 2048 tile!</p>
+            <div class="result-stats">
+                <div class="result-stat">
+                    <span class="result-stat-label">Score:</span>
+                    <span id="result-score" class="result-stat-value">0</span>
+                </div>
+                <div class="result-stat">
+                    <span class="result-stat-label">Time:</span>
+                    <span id="result-time" class="result-stat-value">00:00</span>
+                </div>
+                <div class="result-stat">
+                    <span class="result-stat-label">Moves:</span>
+                    <span id="result-moves" class="result-stat-value">0</span>
+                </div>
+                <div class="result-stat">
+                    <span class="result-stat-label">Highest Tile:</span>
+                    <span id="result-highest" class="result-stat-value">2</span>
+                </div>
+            </div>
+            <div class="result-buttons">
+                <!-- MODIFICADO: Botones igual que Sliding Puzzle -->
+                <button id="result-restart" class="btn result-btn">Play Again</button>
+                <a href="../index.html" class="btn result-btn result-btn-secondary">
+                    <i class="fas fa-home"></i> Back to Home
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4><i class="fas fa-gamepad"></i> Arcade Games</h4>
+                <p>A platform for classic games, competition, and community.</p>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#games">Games</a></li>
+                    <li><a href="../index.html#leaderboard">Leaderboard</a></li>
+                    <li><a href="../login.html">Login</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Games</h4>
+                <ul class="footer-links">
+                    <li><a href="memory.html">Memory Match</a></li>
+                    <li><a href="minesweeper.html">Minesweeper</a></li>
+                    <li><a href="sliding_puzzle.html">Sliding Puzzle</a></li>
+                    <li><a href="game_2048.html">2048</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Project Info</h4>
+                <p><strong>Final Project:</strong> PMUD</p>
+                <p><strong>Student:</strong> Alex Matilla Santos</p>
+                <p><strong>Tech:</strong> Node.js, Express, SQLite</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 Arcade Games. All rights reserved.</p>
+            <p id="api-status">
+                <i class="fas fa-circle api-status-offline"></i> API Status: Checking...
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/game_2048_jquery.js"></script>
+</body>
+</html>

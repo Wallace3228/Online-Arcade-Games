@@ -1,0 +1,505 @@
+/* =====================
+   Sliding Puzzle Game Styles
+===================== */
+.game-container {
+  max-width: 800px;
+  margin: 20px auto 40px;
+  padding: 20px;
+  text-align: center;
+}
+
+.game-header {
+  margin-bottom: 30px;
+}
+
+.game-title {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #007bff;
+}
+
+.game-description {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: #666;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body.dark .game-description {
+  color: #ccc;
+}
+
+.game-stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.stat {
+  background: #fafafa;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  min-width: 150px;
+  text-align: center;
+}
+
+body.dark .stat {
+  background: #222;
+  border: 1px solid #444;
+}
+
+.stat-label {
+  font-weight: bold;
+  margin-right: 5px;
+  color: #007bff;
+}
+
+.difficulty-select {
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+body.dark .difficulty-select {
+  background: #222;
+  border: 1px solid #444;
+  color: #eee;
+}
+
+.btn {
+  background: #007bff;
+  color: white !important;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.3s;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.btn:hover {
+  background: #0056b3;
+  color: white !important;
+}
+
+/* Sliding Puzzle Board */
+.puzzle-board-container {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+  overflow-x: auto;
+}
+
+.puzzle-board {
+  display: grid;
+  gap: 4px;
+  background-color: #999;
+  padding: 5px;
+  border-radius: 8px;
+  margin: 0 auto;
+  touch-action: manipulation;
+  width: fit-content;
+  max-width: 100%;
+  position: relative;
+}
+
+/* Board sizes */
+.board-3x3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.board-4x4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.board-5x5 {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.puzzle-tile {
+  width: 100px;
+  height: 100px;
+  background-color: #ddd;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 28px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+body.dark .puzzle-tile {
+  color: #eee;
+}
+
+.puzzle-tile:hover:not(.empty) {
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+body.dark .puzzle-tile:hover:not(.empty) {
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+.puzzle-tile.empty {
+  background-color: transparent !important;
+  cursor: default;
+  box-shadow: none !important;
+  transform: none !important;
+  border: 2px dashed #999;
+}
+
+body.dark .puzzle-tile.empty {
+  border-color: #666;
+  background-color: transparent !important;
+}
+
+/* Colores basados en la fila destino del número */
+.puzzle-tile.color-row-0 { background-color: #ffcccc; } /* Fila 0: Rojo claro */
+.puzzle-tile.color-row-1 { background-color: #ccffcc; } /* Fila 1: Verde claro */
+.puzzle-tile.color-row-2 { background-color: #cce5ff; } /* Fila 2: Azul claro */
+.puzzle-tile.color-row-3 { background-color: #ffffcc; } /* Fila 3: Amarillo claro */
+.puzzle-tile.color-row-4 { background-color: #e5ccff; } /* Fila 4: Púrpura claro */
+
+/* Colores para tema oscuro */
+body.dark .puzzle-tile.color-row-0 { background-color: #663333; }
+body.dark .puzzle-tile.color-row-1 { background-color: #336633; }
+body.dark .puzzle-tile.color-row-2 { background-color: #334466; }
+body.dark .puzzle-tile.color-row-3 { background-color: #666633; }
+body.dark .puzzle-tile.color-row-4 { background-color: #663366; }
+
+/* Game Status */
+.game-status {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  min-height: 30px;
+}
+
+.game-status.win {
+  color: #28a745;
+}
+
+body.dark .game-status.win {
+  color: #69db7c;
+}
+
+/* Instructions */
+.instructions {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+body.dark .instructions {
+  background-color: #222;
+  border: 1px solid #444;
+}
+
+.instructions h3 {
+  margin-bottom: 10px;
+  color: #007bff;
+}
+
+.instructions ul {
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+.instructions li {
+  margin-bottom: 5px;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  font-size: 1.2rem;
+}
+
+.theme-toggle:hover {
+  background: #0056b3;
+}
+
+/* =====================
+   Victory Screen
+===================== */
+.victory-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.victory-screen.hidden {
+  display: none;
+}
+
+.victory-content {
+  background: #fff;
+  border-radius: 16px;
+  padding: 40px;
+  text-align: center;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  animation: victory-appear 0.5s ease-out;
+}
+
+body.dark .victory-content {
+  background: #222;
+  color: #eee;
+  border: 1px solid #444;
+}
+
+@keyframes victory-appear {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.victory-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  animation: bounce 1s ease infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.victory-title {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+  color: #007bff;
+}
+
+.victory-message {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #666;
+}
+
+body.dark .victory-message {
+  color: #ccc;
+}
+
+.victory-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+body.dark .victory-stats {
+  background: #333;
+}
+
+.victory-stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #e9ecef;
+}
+
+body.dark .victory-stat {
+  border-bottom: 1px solid #444;
+}
+
+.victory-stat:last-child {
+  border-bottom: none;
+}
+
+.victory-stat-label {
+  font-weight: bold;
+  color: #495057;
+}
+
+body.dark .victory-stat-label {
+  color: #ccc;
+}
+
+.victory-stat-value {
+  font-weight: bold;
+  color: #007bff;
+}
+
+body.dark .victory-stat-value {
+  color: #4dabf7;
+}
+
+.victory-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.victory-btn {
+  padding: 12px 24px;
+  font-size: 1rem;
+  min-width: 140px;
+}
+
+.victory-btn-secondary {
+  background: #6c757d;
+}
+
+.victory-btn-secondary:hover {
+  background: #545b62;
+}
+
+/* =====================
+   Responsive
+===================== */
+@media(max-width: 768px) {
+  .game-container {
+    margin-top: 20px;
+    padding: 15px;
+  }
+
+  .game-title {
+    font-size: 2rem;
+  }
+
+  .game-stats {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .stat-row {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .stat {
+    min-width: 200px;
+  }
+
+  .puzzle-tile {
+    width: 80px;
+    height: 80px;
+    font-size: 24px;
+  }
+
+  .victory-content {
+    padding: 30px 20px;
+    margin: 20px;
+  }
+
+  .victory-title {
+    font-size: 1.8rem;
+  }
+
+  .victory-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .victory-btn {
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+@media(max-width: 480px) {
+  .puzzle-tile {
+    width: 60px;
+    height: 60px;
+    font-size: 20px;
+  }
+
+  .game-title {
+    font-size: 1.8rem;
+  }
+
+  .victory-content {
+    padding: 25px 15px;
+  }
+
+  .victory-title {
+    font-size: 1.6rem;
+  }
+
+  .victory-icon {
+    font-size: 3rem;
+  }
+}
+
+@media(max-width: 350px) {
+  .puzzle-tile {
+    width: 50px;
+    height: 50px;
+    font-size: 18px;
+  }
+}
+
+/* Responsive adjustments */
+@media(max-width: 768px) {
+    .victory-stat {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .victory-stat .victory-stat-label,
+    .victory-stat .victory-stat-value {
+        min-width: auto;
+        width: 100%;
+    }
+}

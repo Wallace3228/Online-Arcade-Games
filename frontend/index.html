@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arcade Games | Play Classic Games Online</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/games.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dark">
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <i class="fas fa-gamepad"></i> Arcade Games
+            </a>
+            
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link ">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a href="#games" class="nav-link">
+                    <i class="fas fa-gamepad"></i> Games
+                </a>
+                <a href="#leaderboard" class="nav-link">
+                    <i class="fas fa-trophy"></i> Leaderboard
+                </a>
+                
+                <div class="auth-buttons" id="auth-buttons">
+                    <!-- Filled by JavaScript -->
+                </div>
+                
+                <button id="theme-toggle" class="theme-toggle-btn">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Play Classic Arcade Games</h1>
+            <p>Challenge yourself with our collection of 4 classic games. Compete with friends, track your progress, and climb the global leaderboards.</p>
+            
+            <div class="user-welcome" id="user-welcome">
+                <!-- Filled by JavaScript -->
+            </div>
+            
+            <div class="hero-actions">
+                <a href="#games" class="btn btn-primary btn-large">
+                    <i class="fas fa-play-circle"></i> Play Games
+                </a>
+                <a href="login.html" class="btn btn-secondary btn-large" id="login-action-btn">
+                    <i class="fas fa-sign-in-alt"></i> Login to Save Scores
+                </a>
+            </div>
+            
+            <!-- Statistics Section (Hidden by default, shown only when logged in) -->
+            <div class="hero-stats" id="hero-stats" style="display: none;">
+                <div class="stat-item">
+                    <div class="stat-number" id="total-players">0</div>
+                    <div class="stat-label">Registered Players</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="total-games">0</div>
+                    <div class="stat-label">Games Played</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="total-scores">0</div>
+                    <div class="stat-label">Highest Score</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Games Section -->
+    <section class="games-section" id="games">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Game Collection</h2>
+                <p class="section-subtitle">Four classic games, endless entertainment. Click any game to start playing!</p>
+            </div>
+            
+            <div class="games-grid">
+                <!-- Memory Game -->
+                <div class="game-card">
+                    <div class="game-card-header">
+                        <div class="game-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3 class="game-title">Memory Match</h3>
+                    </div>
+                    
+                    <div class="game-card-body">
+                        <p class="game-description">
+                            Test your memory with this classic card matching game. Find all pairs as quickly as possible with the fewest moves!
+                        </p>
+                        
+                        <div class="game-features">
+                            <span class="feature-tag">
+                                <i class="fas fa-layer-group"></i> 3 Difficulties
+                            </span>
+                            <span class="feature-tag">
+                                <i class="fas fa-clock"></i> Timed
+                            </span>
+                            <span class="feature-tag">
+                                <i class="fas fa-star"></i> High Score
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="game-card-footer">
+                        <a href="games/memory.html" class="btn btn-game">
+                            <i class="fas fa-play"></i> Play Now
+                        </a>
+                        <button class="btn btn-outline btn-leaderboard" data-game="memory">
+                            <i class="fas fa-chart-line"></i> Scores
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Minesweeper -->
+                <div class="game-card">
+                    <div class="game-card-header">
+                        <div class="game-icon">
+                            <i class="fas fa-bomb"></i>
+                        </div>
+                        <h3 class="game-title">Minesweeper</h3>
+                    </div>
+                    
+                    <div class="game-card-body">
+                        <p class="game-description">
+                            Find all mines without detonating them. A classic puzzle that tests your logic and strategy skills.
+                        </p>
+                        
+                        <div class="game-features">
+                            <span class="feature-tag">
+                                <i class="fas fa-layer-group"></i> 3 Levels
+                            </span>
+                            <span class="feature-tag">
+                                <i class="fas fa-flag"></i> Flags
+                            </span>
+                            <span class="feature-tag">
+                                <i class="fas fa-chess-board"></i> Strategy
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="game-card-footer">
+                        <a href="games/minesweeper.html" class="btn btn-game">
+                            <i class="fas fa-play"></i> Play Now
+                        </a>
+                        <button class="btn btn-outline btn-leaderboard" data-game="minesweeper">
+                            <i class="fas fa-chart-line"></i> Scores
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Sliding Puzzle -->
+                <div class="game-card">
+                    <div class="game-card-header">
+                        <div class="game-icon">
+                            <i class="fas fa-puzzle-piece"></i>
+                        </div>
+                        <h3 class="game-title">Sliding Puzzle</h3>
+                    </div>
+                    
+                    <div class="game-card-body">
+                        <p class="game-description">
+                            Slide the tiles to arrange them in numerical order. The empty space is your key to solving the puzzle.
+                        </p>
+                        
+                        <div class="game-features">
+                            <span class="feature-tag">
+                                <i class="fas fa-expand-arrows-alt"></i> 3 Sizes
+                            </span>
+                            <span class="feature-tag">
+                                <i class="fas fa-arrows-alt-h"></i> Sliding
+                            </span>
+                            <span class="feature-tag">
+                                <i class="fas fa-lightbulb"></i> Logic
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="game-card-footer">
+                        <a href="games/sliding_puzzle.html" class="btn btn-game">
+                            <i class="fas fa-play"></i> Play Now
+                        </a>
+                        <button class="btn btn-outline btn-leaderboard" data-game="sliding_puzzle">
+                            <i class="fas fa-chart-line"></i> Scores
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 2048 -->
+                <div class="game-card">
+                    <div class="game-card-header">
+                        <div class="game-icon">
+                            <i class="fas fa-superscript"></i>
+                        </div>
+                        <h3 class="game-title">2048</h3>
+                    </div>
+                    
+                    <div class="game-card-body">
+                        <p class="game-description">
+                            Join numbers to get to the 2048 tile. An addictive puzzle that combines strategy and quick thinking.
+                        </p>
+                        
+                        <div class="game-features">
+                            <span class="feature-tag">
+                                <i class="fas fa-calculator"></i> Numbers
+                            </span>
+                            <span class="feature-tag">
+                                <i class="fas fa-chart-line"></i> Strategy
+                            </span>
+                            <span class="feature-tag">
+                                <i class="fas fa-bolt"></i> Fast-paced
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="game-card-footer">
+                        <a href="games/game_2048.html" class="btn btn-game">
+                            <i class="fas fa-play"></i> Play Now
+                        </a>
+                        <button class="btn btn-outline btn-leaderboard" data-game="2048">
+                            <i class="fas fa-chart-line"></i> Scores
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leaderboard Section -->
+    <section class="leaderboard-section" id="leaderboard">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Global Leaderboard</h2>
+                <p class="section-subtitle">Top players from around the world. Can you make it to the top?</p>
+            </div>
+            
+            <div class="leaderboard-container">
+                <div class="leaderboard-tabs">
+                    <button class="leaderboard-tab active" data-game="memory">
+                        <i class="fas fa-brain"></i> Memory
+                    </button>
+                    <button class="leaderboard-tab" data-game="minesweeper">
+                        <i class="fas fa-bomb"></i> Minesweeper
+                    </button>
+                    <button class="leaderboard-tab" data-game="sliding_puzzle">
+                        <i class="fas fa-puzzle-piece"></i> Sliding Puzzle
+                    </button>
+                    <button class="leaderboard-tab" data-game="2048">
+                        <i class="fas fa-superscript"></i> 2048
+                    </button>
+                </div>
+                
+                <div class="leaderboard-content">
+                    <h3 id="leaderboard-title">Memory Match Leaderboard</h3>
+                    
+                    <div class="leaderboard-controls" id="difficulty-controls">
+                        <select id="difficulty-filter" class="filter-select">
+                            <option value="all">All Difficulties</option>
+                            <option value="easy">Easy</option>
+                            <option value="medium">Medium</option>
+                            <option value="hard">Hard</option>
+                        </select>
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table class="leaderboard-table">
+                            <thead>
+                                <tr>
+                                    <th>Rank</th>
+                                    <th>Player</th>
+                                    <th>Score</th>
+                                    <th>Moves</th>
+                                    <th>Time</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="leaderboard-body">
+                                <tr>
+                                    <td colspan="6" class="text-center">
+                                        <div class="loading-spinner">
+                                            <i class="fas fa-spinner fa-spin"></i> Loading leaderboard...
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="leaderboard-footer">
+                        <p class="leaderboard-note">
+                            <i class="fas fa-info-circle"></i>
+                            Log in to save your scores and appear on the leaderboard!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4><i class="fas fa-gamepad"></i> Arcade Games</h4>
+                <p>A platform for classic games, competition, and community.</p>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#games">Games</a></li>
+                    <li><a href="#leaderboard">Leaderboard</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Games</h4>
+                <ul class="footer-links">
+                    <li><a href="games/memory.html">Memory Match</a></li>
+                    <li><a href="games/minesweeper.html">Minesweeper</a></li>
+                    <li><a href="games/sliding_puzzle.html">Sliding Puzzle</a></li>
+                    <li><a href="games/game_2048.html">2048</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Project Info</h4>
+                <p><strong>Final Project:</strong> PMUD</p>
+                <p><strong>Student:</strong> Alex Matilla Santos</p>
+                <p><strong>Tech:</strong> Node.js, Express, SQLite</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 Arcade Games. All rights reserved.</p>
+            <p id="api-status">
+                <i class="fas fa-circle api-status-offline"></i> API Status: Checking...
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/games.js"></script>
+</body>
+</html>
